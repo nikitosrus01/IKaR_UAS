@@ -8,107 +8,129 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    :root{
-      --bg:#0f1724;
-      --card:rgba(255,255,255,0.04);
-      --accent:#6ee7b7;
-      --muted:#93a4b8;
-      --glass: rgba(255,255,255,0.03);
+    :root {
+      --bg: #0f1724;
+      --card: rgba(255, 255, 255, 0.04);
+      --accent: #6ee7b7;
+      --muted: #93a4b8;
+      --glass: rgba(255, 255, 255, 0.03);
     }
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body{
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      margin:0;
-      background:linear-gradient(180deg,#061021 0%, #0f1724 60%);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      user-select:none;
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      background: linear-gradient(180deg, #061021 0%, #0f1724 60%);
+      color: #e6eef6;
+      -webkit-font-smoothing: antialiased;
     }
-    input, textarea, button { user-select:auto; }
+    input, textarea, button { user-select: auto; }
 
     body.light {
       background: linear-gradient(180deg, #f7fafc 0%, #e2e8f0 60%);
-      color:#1a202c;
+      color: #1a202c;
     }
-    body.light nav a { color:#4a5568; }
+    body.light nav a { color: #4a5568; }
     body.light .hero-card,
     body.light .feature,
     body.light .person,
     body.light .docs,
-    body.light footer { background:rgba(0,0,0,0.05); }
-    body.light .small { color:#4a5568; }
+    body.light .app-download,
+    body.light footer { background: rgba(0, 0, 0, 0.05); }
+    body.light .small { color: #4a5568; }
 
-    .container{max-width:1100px;margin:0 auto;padding:32px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:800;color:#04202a}
-    .brand h1{margin:0;font-size:18px;letter-spacing:0.6px}
-    nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    nav a.cta{background:linear-gradient(90deg,var(--accent),#60a5fa);padding:10px 14px;border-radius:10px;color:#04202a}
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #04202a;
+    }
+    .brand h1 { margin: 0; font-size: 18px; letter-spacing: 0.6px; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+    nav a.cta {
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      padding: 10px 14px; border-radius: 10px; color: #04202a;
+    }
 
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:36px}
-    .hero-card{background:var(--card);border-radius:16px;padding:28px;backdrop-filter:blur(6px);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-    .eyebrow{color:var(--accent);font-weight:700;display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(110,231,183,0.12), rgba(96,165,250,0.08));}
-    h2{margin:12px 0 8px;font-size:30px}
-    p.lead{color:var(--muted);line-height:1.5}
-    .specs{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .spec{background:var(--glass);padding:12px;border-radius:10px;text-align:center;min-width:110px;flex:1}
-    .spec b{display:block;font-size:18px}
+    .hero { display: grid; grid-template-columns: 1fr 420px; gap: 28px; align-items: center; margin-top: 36px; }
+    .hero-card {
+      background: var(--card); border-radius: 16px; padding: 28px;
+      backdrop-filter: blur(6px); box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+    }
+    .eyebrow {
+      color: var(--accent); font-weight: 700; display: inline-block;
+      padding: 6px 10px; border-radius: 999px;
+      background: linear-gradient(90deg, rgba(110, 231, 183, 0.12), rgba(96, 165, 250, 0.08));
+    }
+    h2 { margin: 12px 0 8px; font-size: 30px; }
+    p.lead { color: var(--muted); line-height: 1.5; }
+    .specs { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+    .spec {
+      background: var(--glass); padding: 12px; border-radius: 10px;
+      text-align: center; min-width: 110px; flex: 1;
+    }
+    .spec b { display: block; font-size: 18px; }
 
-    .mockup img{width:100%;height:auto;object-fit:cover;border-radius:10px;cursor:pointer}
+    .mockup img { width: 100%; height: auto; object-fit: cover; border-radius: 10px; cursor: pointer; }
 
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;transition:transform .25s}
-    .feature h3{margin:8px 0}
-    .feature:hover{transform:translateY(-8px)}
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+    .feature {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      padding: 18px; border-radius: 12px; transition: transform .25s;
+    }
+    .feature h3 { margin: 8px 0; }
+    .feature:hover { transform: translateY(-8px); }
 
-    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
-    .person{padding:14px;border-radius:12px;text-align:center}
-    .person img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:8px}
-    .name{font-weight:700;margin-bottom:4px}
-    .role{color:var(--muted);font-size:13px;margin-bottom:6px}
-    .contacts a{color:var(--accent);text-decoration:none;font-size:14px}
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px; }
+    .person { padding: 14px; border-radius: 12px; text-align: center; }
+    .person img {
+      width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 8px;
+    }
+    .name { font-weight: 700; margin-bottom: 4px; }
+    .role { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+    .contacts a { color: var(--accent); text-decoration: none; font-size: 14px; }
 
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
-    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px;cursor:pointer}
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 26px; }
+    .gallery img {
+      width: 100%; height: 140px; object-fit: cover; border-radius: 8px; cursor: pointer;
+    }
 
-    .docs{margin-top:32px;padding:18px;border-radius:12px;}
-    .docs a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--accent);color:#04202a;text-decoration:none;font-weight:600}
+    .docs, .app-download {
+      margin-top: 32px; padding: 18px; border-radius: 12px;
+    }
+    .docs a, .app-download a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px; border-radius: 10px;
+      background: var(--accent); color: #04202a;
+      text-decoration: none; font-weight: 600;
+    }
 
-    footer{margin-top:48px;padding:22px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-    .small{color:var(--muted);font-size:13px}
+    footer {
+      margin-top: 48px; padding: 22px; border-radius: 12px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    }
+    .small { color: var(--muted); font-size: 13px; }
 
-    .theme-toggle{
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      width:46px;
-      height:46px;
-      border-radius:50%;
-      border:none;
-      background:var(--accent);
-      color:#04202a;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 4px 12px rgba(0,0,0,0.4);
-      transition:transform .25s;
-      z-index:10000;
+    .theme-toggle {
+      position: fixed; bottom: 20px; right: 20px;
+      width: 46px; height: 46px; border-radius: 50%;
+      border: none; background: var(--accent); color: #04202a;
+      font-weight: 800; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform .25s; z-index: 10000;
     }
 
     .lightbox {
-      position: fixed;
-      top: 0; left: 0;
+      position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 9999;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease; z-index: 9999;
     }
     .lightbox.active { opacity: 1; visibility: visible; }
     .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -118,53 +140,36 @@
     .lightbox-arrow.right { right: 20px; }
 
     /* 📱 Адаптив */
-/* 📱 Мобильные стили */
-@media (max-width: 900px) {
-  /* Hero-блок (чтобы карточка и картинка были слева и друг под другом) */
-  .hero {
-    grid-template-columns: 1fr;
-    justify-items: start;   /* прижать влево */
-  }
-  .hero-card,
-  .mockup {
-    width: 100%;
-    justify-self: start;
-  }
-
-  /* Особенности (Инженерия / Программирование / Исследования) */
-  .features {
-    grid-template-columns: 1fr;  /* один под другим */
-    justify-items: start;
-  }
-  .feature {
-    width: 100%;
-  }
-
-  /* Команда */
-  .team-grid {
-    grid-template-columns: 1fr;  /* участники друг за другом */
-    justify-items: start;
-  }
-  .person {
-    width: 100%;
-  }
-}
-
-
-
-
-  .hero-card,
-  .mockup {
-    margin-left: 0;       /* убираем авто-центрирование */
-    justify-self: start;  /* принудительно прижимаем влево */
-  }
-
-  .mockup img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+      .hero-card,
+      .mockup {
+        width: 100%;
+        justify-self: start;
+        margin-left: 0;
+      }
+      .features {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+      .feature {
+        width: 100%;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+      .person {
+        width: 100%;
+      }
+      .mockup img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -174,7 +179,7 @@
         <div class="logo">ИК</div>
         <div>
           <h1>Икар</h1>
-          <div class="small">Школьный проект: беспилотник</div>
+          <div class="small">Хакатон ИКаР: метеодрон</div>
         </div>
       </div>
       <nav>
@@ -182,6 +187,7 @@
         <a href="#team">Команда</a>
         <a href="#gallery">Галерея</a>
         <a href="#docs">Документация</a>
+        <a href="#app">Приложение</a>
         <a href="#contact">Связаться</a>
       </nav>
     </header>
@@ -189,21 +195,23 @@
     <section class="hero">
       <div class="hero-card">
         <span class="eyebrow">ИКаР 2025</span>
-        <h2>Беспилотник "лабуба"</h2>
-        <p class="lead">Проект школьной команды инженеров и программистов.</p>
+        <h2>Метеодрон «Буревестник»</h2>
+        <p class="lead">Проект школьной команды: автономный дрон для сбора метеоданных в труднодоступных районах.</p>
         <div class="specs">
-          <div class="spec"><b>9999 мин</b><span class="role">время полёта</span></div>
-          <div class="spec"><b>1024К</b><span class="role">камера</span></div>
-          <div class="spec"><b>7 км</b><span class="role">дальность</span></div>
+          <div class="spec"><b>до 90 мин</b><span class="role">время полёта</span></div>
+          <div class="spec"><b>4K</b><span class="role">камера</span></div>
+          <div class="spec"><b>15 км</b><span class="role">дальность</span></div>
         </div>
       </div>
       
       <aside class="mockup">
-        <img src="img/ikar.png" alt="Беспилотник AeroNova" style="width:400px; height:auto;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+        <img src="img/ikar.png" alt="Беспилотник Буревестник" style="width:400px; height:auto;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px">
           <div>
-            <div style="font-weight:800">лабуба — прототип</div>
-            <div class="small" style="margin-top:6px;color:var(--muted)">Икар круче сириуса</div>
+            <div style="font-weight:800">Буревестник — прототип</div>
+            <div class="small" style="margin-top:6px; color:var(--muted)">
+              Инновационное решение для мониторинга погоды
+            </div>
           </div>
           <div style="text-align:right">
             <div style="font-weight:700">Статус</div>
@@ -216,15 +224,15 @@
     <section id="about" class="features">
       <div class="feature">
         <h3>Инженерия</h3>
-        <p>Современные материалы и конструкторские решения для лёгкости и прочности.</p>
+        <p>Облегчённая рама из композитных материалов, продуманная аэродинамика и модульная конструкция.</p>
       </div>
       <div class="feature">
         <h3>Программирование</h3>
-        <p>Собственная прошивка для навигации и управления.</p>
+        <p>Собственная прошивка на базе PX4 с алгоритмами стабилизации и автоматической посадки.</p>
       </div>
       <div class="feature">
         <h3>Исследования</h3>
-        <p>Испытания в разных условиях, сбор и анализ данных.</p>
+        <p>Полётные испытания с записью температуры, влажности и давления, анализ данных в реальном времени.</p>
       </div>
     </section>
 
@@ -232,39 +240,39 @@
       <h2>Команда</h2>
       <div class="team-grid">
         <div class="person">
-          <img src="img/atler.jpg" alt="Фото программиста Кирилл">
-          <div class="name">Хужин Атлер</div>
+          <img src="img/atler.jpg" alt="Фото наставника Атлера">
+          <div class="name">Атлер Хужин</div>
           <div class="role">Наставник</div>
           <div class="contacts">
-            ✉️ <a href="mailto:kirill@example.com">Атлер@почта.ру</a><br>
+            ✉️ <a href="mailto:atl.khuzhin@example.com">atl.khuzhin@example.com</a><br>
             💬 <a href="https://t.me/atlerrc" target="_blank">@atlerrc</a>
           </div>
         </div>
         <div class="person">
-          <img src="img/masha.png" alt="Фото программиста Мария">
-          <div class="name">Коробейникова Мария</div>
+          <img src="img/masha.png" alt="Фото программиста Марии">
+          <div class="name">Мария Коробейникова</div>
           <div class="role">Программист</div>
           <div class="contacts">
-            ✉️ <a href="mailto:masha@example.com">Маша@почта.ру</a><br>
+            ✉️ <a href="mailto:maria.k@example.com">maria.k@example.com</a><br>
             💬 <a href="https://t.me/koro_mar" target="_blank">@koro_mar</a>
           </div>
         </div>
         <div class="person">
-          <img src="img/nik.png" alt="Фото инженера Никита">
-          <div class="name">Голубицкий Никита</div>
+          <img src="img/nik.png" alt="Фото инженера Никиты">
+          <div class="name">Никита Голубицкий</div>
           <div class="role">Инженер, программист</div>
           <div class="contacts">
-            ✉️ <a href="mailto:nikita@example.com">nikitorus01@gmail.com</a><br>
+            ✉️ <a href="mailto:nikitorus01@gmail.com">nikitorus01@gmail.com</a><br>
             💬 <a href="https://t.me/nikitosrus01" target="_blank">@nikitosrus01</a>
           </div>
         </div>
         <div class="person">
-          <img src="img/vak.jpg" alt="Фото инженера Сергей">
-          <div class="name">Вакантно</div>
-          <div class="role">Инженер</div>
+          <img src="img/vak.jpg" alt="Фото инженера Егора">
+          <div class="name">Егор Кузнецов</div>
+          <div class="role">Инженер-конструктор</div>
           <div class="contacts">
-            ✉️ <a href="mailto:sergey@example.com">Вакантно@почта.ру</a><br>
-            💬 <a href="https://t.me/SergeyOkhotin" target="_blank">@None</a>
+            ✉️ <a href="mailto:e.kuznetsov@example.com">e.kuznetsov@example.com</a><br>
+            💬 <a href="https://t.me/egorkuz" target="_blank">@egorkuz</a>
           </div>
         </div>
       </div>
@@ -273,37 +281,48 @@
     <section id="gallery">
       <h2>Галерея</h2>
       <div class="gallery">
-        <img src="img/drone.png" alt="дрон на столе">
-        <img src="img/drone2.png" alt="команда">
-        <img src="img/drone1.png" alt="испытания">
+        <img src="img/drone.png" alt="Дрон на столе">
+        <img src="img/drone2.png" alt="Команда за работой">
+        <img src="img/drone1.png" alt="Испытания в поле">
       </div>
     </section>
 
     <section id="docs" class="docs">
       <h2>Документация</h2>
-      <p class="lead">Здесь можно скачать техническую документацию проекта в формате PDF:</p>
-      <a href="docs/aeronova-docs.pdf" class="btn primary">Скачать PDF</a>
+      <p class="lead">Техническое описание, электрические схемы и 3D-модели для печати:</p>
+      <a href="docs/meteodron-docs.pdf" class="btn primary">Скачать PDF</a>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: приложение для просмотра логов метеодрона -->
+    <section id="app" class="app-download">
+      <h2>Мобильное приложение</h2>
+      <p class="lead">
+        Мы разработали Android-приложение, которое помогает смотреть полётные логи с метеодрона:
+        графики телеметрии, карта маршрута и датчики в реальном времени.
+      </p>
+      <a href="app/meteodron-viewer.apk" style="display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:#04202a; padding:12px 20px; border-radius:12px; text-decoration:none; font-weight:600;">
+        <i data-lucide="download" style="width:20px; height:20px;"></i> Скачать APK
+      </a>
     </section>
 
     <section id="contact" style="margin-top:30px">
       <h2>Связаться</h2>
-      <p class="lead">Хотите сотрудничать, организовать демонстрацию или задать вопрос — напишите нам.</p>
-      <form onsubmit="event.preventDefault();alert('Спасибо! Форма отправлена.');" style="display:flex;gap:12px;flex-wrap:wrap">
-        <input type="text" placeholder="Имя" required style="flex:1;min-width:180px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-        <input type="email" placeholder="Email" required style="flex:1;min-width:200px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-        <textarea placeholder="Сообщение" required style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
-        <div style="width:100%;display:flex;justify-content:flex-end">
-          <button class="btn primary">Отправить</button>
+      <p class="lead">Хотите сотрудничать, пригласить нас на демонстрацию или задать вопрос — напишите нам.</p>
+      <form onsubmit="event.preventDefault(); alert('Спасибо! Сообщение отправлено.');" style="display:flex; gap:12px; flex-wrap:wrap">
+        <input type="text" placeholder="Имя" required style="flex:1; min-width:180px; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit">
+        <input type="email" placeholder="Email" required style="flex:1; min-width:200px; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit">
+        <textarea placeholder="Сообщение" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit"></textarea>
+        <div style="width:100%; display:flex; justify-content:flex-end">
+          <button class="btn primary" style="background:var(--accent); color:#04202a; border:none; padding:10px 20px; border-radius:10px; font-weight:600; cursor:pointer">Отправить</button>
         </div>
       </form>
     </section>
 
     <footer>
-      <div class="small">© 2025 @nikitosrus01 — 2 программиста • 2 инженера</div>
+      <div class="small">© 2025 Команда «Буревестник» — хакатон ИКаР</div>
     </footer>
   </div>
   
-
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightboxClose">&times;</span>
     <span class="lightbox-arrow left" id="lightboxPrev">&#10094;</span>
@@ -311,18 +330,17 @@
     <span class="lightbox-arrow right" id="lightboxNext">&#10095;</span>
   </div>
 
-
   <button class="theme-toggle" id="themeToggle">☀️</button>
 
   <script>
-
+    // Переключение темы
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('light');
       themeToggle.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
     });
 
-
+    // Лайтбокс для галереи
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.getElementById('lightboxClose');
@@ -351,7 +369,13 @@
       if (e.key === 'ArrowLeft') showPrev();
       if (e.key === 'ArrowRight') showNext();
     });
+
+    // Инициализация иконок Lucide
+    window.addEventListener('load', () => {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
   </script>
 </body>
 </html>
-
